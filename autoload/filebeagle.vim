@@ -149,6 +149,8 @@ function! s:discover_paths(current_dir, glob_pattern, is_include_hidden, is_incl
 
     let l:current_dir = substitute(a:current_dir, '{', '\\{', 'g')
     let l:current_dir = substitute(l:current_dir, '}', '\\}', 'g')
+    let l:current_dir = substitute(l:current_dir, '[', '\\[', 'g')
+    let l:current_dir = substitute(l:current_dir, ']', '\\]', 'g')
 
     if a:is_include_hidden
         let path_str = glob(l:current_dir.s:sep.'.[^.]'.a:glob_pattern)."\n".glob(l:current_dir.s:sep.a:glob_pattern)
